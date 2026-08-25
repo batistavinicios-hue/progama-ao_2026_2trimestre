@@ -6,69 +6,112 @@
     <meta name="description" content="Projeto Game do Saber: Promovendo a conscientização e preservação do patrimônio escolar.">
     <title>Game do Saber — Nossa Escola, Nosso Compromisso</title>
 
-    <!-- Preconnect para fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Acessibilidade: Atalho para leitores de tela e navegação por teclado -->
     <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
     <header class="site-header">
-        <nav class="nav-container" aria-label="Navegação Principal">
+        <div class="container nav-container">
             <a href="#inicio" class="logo-link">
+                <span class="logo-icon">🎮</span>
                 <span class="logo-text">GAME DO SABER</span>
             </a>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Início</a></li>
-                <li><a href="#projetos" class="nav-link">Projetos</a></li>
-            </ul>
-        </nav>
+            <nav aria-label="Navegação Principal">
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link active">Início</a></li>
+                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main id="conteudo-principal">
         
-        <!-- Hero Section -->
         <section id="inicio" class="hero-section">
             <div class="container hero-content">
                 <span class="badge">Iniciativa Estudantil</span>
                 <h1 class="hero-title">Game do Saber</h1>
                 <p class="hero-subtitle">Nossa Escola, Nosso Compromisso</p>
                 <p class="hero-question">O que nós podemos fazer para tornar nossa escola ainda melhor?</p>
+                <a href="#projetos" class="btn-primary">Ver Nossas Ações</a>
             </div>
         </section>
 
-        <!-- Seção de Projetos -->
         <section id="projetos" class="projects-section" aria-labelledby="titulo-projetos">
             <div class="container">
-                <h2 id="titulo-projetos" class="section-title">Nossas Ações</h2>
+                <div class="section-header">
+                    <h2 id="titulo-projetos" class="section-title">Nossas Ações</h2>
+                    <p class="section-subtitle">Filtre por categoria para ver nossas iniciativas</p>
+                </div>
 
+                <!-- Menu de Seleção de Opções -->
+                <div class="filter-container" role="tablist" aria-label="Categorias de Projetos">
+                    <button class="filter-btn active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+                    <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Patrimônio</button>
+                    <button class="filter-btn" data-filter="ambiente" role="tab" aria-selected="false">Meio Ambiente</button>
+                    <button class="filter-btn" data-filter="convivencia" role="tab" aria-selected="false">Convivência</button>
+                </div>
+
+                <!-- Grid de Projetos -->
                 <div class="projects-grid">
-                    <article class="card">
+                    
+                    <article class="card" data-category="patrimonio">
                         <figure class="card-media">
                             <img 
                                 src="days.jpeg" 
                                 alt="Fotografia dividida mostrando o estado do ventilador da sala antes e depois do conserto." 
                                 loading="lazy"
-                                width="600"
-                                height="400"
                             >
-                            <figcaption class="card-tag">Conservação do Patrimônio</figcaption>
+                            <span class="card-tag">Conservação</span>
                         </figure>
-                        
                         <div class="card-body">
-                            <h3 class="card-title">Manutenção e Cuidado do Ventilador</h3>
+                            <h3 class="card-title">Manutenção do Ventilador</h3>
                             <p class="card-description">
-                                O cuidado com o patrimônio da escola é responsabilidade de todos os estudantes e funcionários.
-                                Os bens duráveis são fundamentais para o bom desenvolvimento das aulas e garantem um ambiente
-                                mais agradável e acolhedor para todos.
+                                O cuidado com o patrimônio da escola é responsabilidade de todos. Manter o equipamento funcional garante um ambiente fresco e propício aos estudos.
                             </p>
                         </div>
                     </article>
+
+                    <article class="card" data-category="ambiente">
+                        <figure class="card-media">
+                            <img 
+                                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" 
+                                alt="Alunos plantando mudas no jardim escolar." 
+                                loading="lazy"
+                            >
+                            <span class="card-tag">Sustentabilidade</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Jardim e Arborização</h3>
+                            <p class="card-description">
+                                Projeto de revitalização das áreas verdes da escola, promovendo o plantio de flores e plantas nativas pelos próprios estudantes.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="convivencia">
+                        <figure class="card-media">
+                            <img 
+                                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" 
+                                alt="Grupo de estudantes sorrindo e conversando no pátio." 
+                                loading="lazy"
+                            >
+                            <span class="card-tag">Integração</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Cultura de Paz</h3>
+                            <p class="card-description">
+                                Oficinas e rodas de conversa voltadas para o combate ao bullying, estimulando a empatia e o respeito no ambiente escolar.
+                            </p>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
@@ -81,5 +124,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
