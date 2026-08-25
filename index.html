@@ -1,51 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game do Saber - Nossa Escola</title>
+    <meta name="description" content="Projeto Game do Saber: Promovendo a conscientização e preservação do patrimônio escolar.">
+    <title>Game do Saber — Nossa Escola, Nosso Compromisso</title>
+
+    <!-- Preconnect para fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">GAME DO SABER</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#projetos">Projetos</a></li>
+    <!-- Acessibilidade: Atalho para leitores de tela e navegação por teclado -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <nav class="nav-container" aria-label="Navegação Principal">
+            <a href="#inicio" class="logo-link">
+                <span class="logo-text">GAME DO SABER</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="main-container" id="inicio">
-        <section class="hero-section">
-            <h1>Game do Saber</h1>
-            <p class="subtitle">Nossa Escola, Nosso Compromisso</p>
-            <h2 class="question">O que nós podemos fazer para tornar nossa escola ainda melhor?</h2>
+    <main id="conteudo-principal">
+        
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-section">
+            <div class="container hero-content">
+                <span class="badge">Iniciativa Estudantil</span>
+                <h1 class="hero-title">Game do Saber</h1>
+                <p class="hero-subtitle">Nossa Escola, Nosso Compromisso</p>
+                <p class="hero-question">O que nós podemos fazer para tornar nossa escola ainda melhor?</p>
+            </div>
         </section>
 
-        <section class="content-section" id="projetos">
-            <article class="card">
-                <figure class="image-wrapper">
-                    <!-- Certifique-se de que a imagem "days.jpeg" está na mesma pasta do arquivo HTML -->
-                    <img src="days.jpeg" alt="Antes e depois do conserto do ventilador na sala de aula">
-                    <figcaption>Antes e depois: Conservação do Ventilador</figcaption>
-                </figure>
-                
-                <div class="card-text">
-                    <p>
-                        O cuidado com o patrimônio da escola é responsabilidade de todos os estudantes e funcionários.
-                        Os bens duráveis são fundamentais para o bom desenvolvimento das aulas e garantem um ambiente
-                        mais agradável e acolhedor para todos.
-                    </p>
+        <!-- Seção de Projetos -->
+        <section id="projetos" class="projects-section" aria-labelledby="titulo-projetos">
+            <div class="container">
+                <h2 id="titulo-projetos" class="section-title">Nossas Ações</h2>
+
+                <div class="projects-grid">
+                    <article class="card">
+                        <figure class="card-media">
+                            <img 
+                                src="days.jpeg" 
+                                alt="Fotografia dividida mostrando o estado do ventilador da sala antes e depois do conserto." 
+                                loading="lazy"
+                                width="600"
+                                height="400"
+                            >
+                            <figcaption class="card-tag">Conservação do Patrimônio</figcaption>
+                        </figure>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Manutenção e Cuidado do Ventilador</h3>
+                            <p class="card-description">
+                                O cuidado com o patrimônio da escola é responsabilidade de todos os estudantes e funcionários.
+                                Os bens duráveis são fundamentais para o bom desenvolvimento das aulas e garantem um ambiente
+                                mais agradável e acolhedor para todos.
+                            </p>
+                        </div>
+                    </article>
                 </div>
-            </article>
+            </div>
         </section>
+
     </main>
 
-    <footer class="footer">
-        <p>&copy; Game do Saber - Projeto Escolar de Conscientização</p>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Game do Saber — Projeto Escolar de Conscientização. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>
