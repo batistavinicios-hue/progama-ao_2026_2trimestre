@@ -10,7 +10,231 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5140ed;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+            --text-muted: #636e72;
+            --accent: #fd79a8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: #fff;
+            padding: 8px;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section com Banner Anime */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .badge {
+            background: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: 3rem;
+            margin: 15px 0 5px;
+            font-weight: 800;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .hero-question {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Seção de Projetos */
+        .projects-section {
+            padding: 60px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-color);
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        /* Filtros */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #e9ecef;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, opacity 0.3s;
+        }
+        .card.hide {
+            display: none;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-media {
+            position: relative;
+            height: 200px;
+        }
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #1e272e;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
 
@@ -64,8 +288,8 @@
                     <article class="card" data-category="patrimonio">
                         <figure class="card-media">
                             <img 
-                                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80" 
-                                alt="Sala de aula vazia necessitando de reparos nos equipamentos e ventilação." 
+                                src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" 
+                                alt="Desenho estilo anime de uma sala de aula de escola." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Urgente</span>
@@ -81,8 +305,8 @@
                     <article class="card" data-category="ambiente">
                         <figure class="card-media">
                             <img 
-                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" 
-                                alt="Parede e espaço escolar desgastados necessitando de pintura." 
+                                src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" 
+                                alt="Ilustração estilo anime de corredor escolar e estrutura." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Reforma</span>
@@ -98,8 +322,8 @@
                     <article class="card" data-category="convivencia">
                         <figure class="card-media">
                             <img 
-                                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" 
-                                alt="Espaço interno degradado precisando de organização." 
+                                src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" 
+                                alt="Ilustração artística estilo anime de espaço de convivência." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Preservação</span>
@@ -124,6 +348,38 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript Interativo para Filtragem -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove classe 'active' e ajusta 'aria-selected' de todos os botões
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+
+                    // Ativa o botão clicado
+                    button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    // Filtra os cards
+                    cards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (filterValue === 'todos' || filterValue === cardCategory) {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
