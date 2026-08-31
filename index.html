@@ -42,6 +42,7 @@
             color: #fff;
             padding: 8px;
             z-index: 100;
+            transition: top 0.2s;
         }
         .skip-link:focus {
             top: 0;
@@ -91,9 +92,9 @@
             color: var(--primary);
         }
 
-        /* Hero Section com Banner Anime */
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             color: #fff;
             padding: 100px 0;
@@ -130,10 +131,11 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
         .btn-primary:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* Seção de Projetos */
@@ -207,7 +209,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             color: #fff;
             padding: 4px 10px;
             border-radius: 6px;
@@ -231,7 +233,7 @@
             background: #1e272e;
             color: #fff;
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             margin-top: 60px;
         }
     </style>
@@ -274,7 +276,7 @@
                     <p class="section-subtitle">Filtre pelas áreas que necessitam de atenção e reparo imediato</p>
                 </div>
 
-                <!-- Menu de Seleção de Opções -->
+                <!-- Menu de Seleção -->
                 <div class="filter-container" role="tablist" aria-label="Categorias de Projetos">
                     <button class="filter-btn active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
                     <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Patrimônio</button>
@@ -282,22 +284,22 @@
                     <button class="filter-btn" data-filter="convivencia" role="tab" aria-selected="false">Áreas Comuns</button>
                 </div>
 
-                <!-- Grid de Projetos -->
+                <!-- Grid de Cards -->
                 <div class="projects-grid">
                     
                     <article class="card" data-category="patrimonio">
                         <figure class="card-media">
                             <img 
                                 src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" 
-                                alt="Desenho estilo anime de uma sala de aula de escola." 
+                                alt="Desenho estilo anime de uma sala de aula." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Urgente</span>
                         </figure>
                         <div class="card-body">
-                            <h3 class="card-title">Manutenção do Ventilador e Carteiras</h3>
+                            <h3 class="card-title">Manutenção de Ventiladores e Carteiras</h3>
                             <p class="card-description">
-                                Identificação de ventiladores quebrados e móveis danificados para mutirão de conserto e troca de peças estragadas nas salas de aula.
+                                Levantamento de mobiliários danificados para organização de mutirão de conserto e reaproveitamento de peças.
                             </p>
                         </div>
                     </article>
@@ -306,7 +308,7 @@
                         <figure class="card-media">
                             <img 
                                 src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" 
-                                alt="Ilustração estilo anime de corredor escolar e estrutura." 
+                                alt="Ilustração estilo anime de corredor escolar." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Reforma</span>
@@ -314,7 +316,7 @@
                         <div class="card-body">
                             <h3 class="card-title">Pintura e Reparo de Paredes</h3>
                             <p class="card-description">
-                                Ação voltada para cobrir pichações, tratar infiltrações e revitalizar a pintura descascada dos corredores e salas.
+                                Ação voltada para revitalizar a pintura de corredores, cobrir marcas do tempo e remover pichações das áreas comuns.
                             </p>
                         </div>
                     </article>
@@ -323,15 +325,49 @@
                         <figure class="card-media">
                             <img 
                                 src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" 
-                                alt="Ilustração artística estilo anime de espaço de convivência." 
+                                alt="Ilustração artística estilo anime de espaço escolar." 
                                 loading="lazy"
                             >
                             <span class="card-tag">Preservação</span>
                         </figure>
                         <div class="card-body">
-                            <h3 class="card-title">Conscientização Contra o Vandalismo</h3>
+                            <h3 class="card-title">Campanha Contra o Vandalismo</h3>
                             <p class="card-description">
-                                Campanha para engajar os alunos no combate ao estrago de lâmpadas, portas e banheiros, promovendo o sentimento de pertencimento.
+                                Engajamento dos estudantes para manter a conservação de portas, lâmpadas e banheiros, fortalecendo a responsabilidade coletiva.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="ambiente">
+                        <figure class="card-media">
+                            <img 
+                                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" 
+                                alt="Ilustração de ambiente de estudos iluminado." 
+                                loading="lazy"
+                            >
+                            <span class="card-tag">Iluminação</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Substituição de Lâmpadas Queimadas</h3>
+                            <p class="card-description">
+                                Mapeamento e troca de lâmpadas defeituosas para melhorar a visibilidade e o conforto térmico nas salas de aula.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="convivencia">
+                        <figure class="card-media">
+                            <img 
+                                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
+                                alt="Alunos colaborando em grupo estilo anime." 
+                                loading="lazy"
+                            >
+                            <span class="card-tag">Comunidade</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Organização da Pátio e Refeitório</h3>
+                            <p class="card-description">
+                                Criação de pontos de coleta seletiva e conscientização para manter o pátio limpo durante os horários de intervalo.
                             </p>
                         </div>
                     </article>
@@ -344,11 +380,10 @@
 
     <footer class="site-footer">
         <div class="container footer-content">
-            <p>&copy; 2026 Game do Saber — Projeto Escolar de Conscientização. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Game do Saber — Projeto Escolar de Conscientização e Preservação.</p>
         </div>
     </footer>
 
-    <!-- JavaScript Interativo para Filtragem -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -356,19 +391,16 @@
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remove classe 'active' e ajusta 'aria-selected' de todos os botões
                     filterButtons.forEach(btn => {
                         btn.classList.remove('active');
                         btn.setAttribute('aria-selected', 'false');
                     });
 
-                    // Ativa o botão clicado
                     button.classList.add('active');
                     button.setAttribute('aria-selected', 'true');
 
                     const filterValue = button.getAttribute('data-filter');
 
-                    // Filtra os cards
                     cards.forEach(card => {
                         const cardCategory = card.getAttribute('data-category');
                         if (filterValue === 'todos' || filterValue === cardCategory) {
