@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projeto Game do Saber: Promovendo a conscientização e preservação do patrimônio escolar.">
-    <title>Game do Saber — Nossa Escola, Nosso Compromisso</title>
+    <meta name="description" content="Projeto Game do Saber: Transformação e preservação do patrimônio escolar - Antes e Depois.">
+    <title>Game do Saber — Antes & Depois da Nossa Escola</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,8 @@
             --text-color: #2d3436;
             --text-muted: #636e72;
             --accent: #fd79a8;
+            --danger: #ff7675;
+            --success: #55efc4;
         }
 
         * {
@@ -94,8 +96,8 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             color: #fff;
             padding: 100px 0;
             text-align: center;
@@ -180,7 +182,7 @@
         /* Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
         .card {
@@ -189,6 +191,8 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: transform 0.2s, opacity 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .card.hide {
             display: none;
@@ -196,15 +200,32 @@
         .card:hover {
             transform: translateY(-5px);
         }
+        
+        /* Mídia com Troca de Imagem (Antes/Depois) */
         .card-media {
             position: relative;
-            height: 200px;
+            height: 220px;
+            background: #2d3436;
         }
         .card-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.4s ease-in-out;
         }
+        .card-media img.img-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+        .card-media.show-after img.img-before {
+            opacity: 0;
+        }
+        .card-media.show-after img.img-after {
+            opacity: 1;
+        }
+
         .card-tag {
             position: absolute;
             top: 15px;
@@ -215,9 +236,47 @@
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 700;
+            z-index: 2;
         }
+
+        /* Botões de Alternância Antes/Depois */
+        .toggle-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 4px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+        .toggle-btn {
+            border: none;
+            background: transparent;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .toggle-btn.active-before {
+            background: #d63031;
+            color: #fff;
+        }
+        .toggle-btn.active-after {
+            background: #00b894;
+            color: #fff;
+        }
+
         .card-body {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         .card-title {
             font-size: 1.2rem;
@@ -251,7 +310,7 @@
             <nav aria-label="Navegação Principal">
                 <ul class="nav-menu">
                     <li><a href="#inicio" class="nav-link active">Início</a></li>
-                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#projetos" class="nav-link">Antes & Depois</a></li>
                 </ul>
             </nav>
         </div>
@@ -261,113 +320,112 @@
         
         <section id="inicio" class="hero-section">
             <div class="container hero-content">
-                <span class="badge">Iniciativa Estudantil</span>
+                <span class="badge">Transformação Escolar</span>
                 <h1 class="hero-title">Game do Saber</h1>
                 <p class="hero-subtitle">Nossa Escola, Nosso Compromisso</p>
-                <p class="hero-question">O que nós podemos fazer para restaurar e cuidar da nossa escola?</p>
-                <a href="#projetos" class="btn-primary">Ver Situação e Ações</a>
+                <p class="hero-question">Veja os resultados do nosso esforço coletivo para restaurar e preservar os espaços da escola.</p>
+                <a href="#projetos" class="btn-primary">Ver Transformações</a>
             </div>
         </section>
 
         <section id="projetos" class="projects-section" aria-labelledby="titulo-projetos">
             <div class="container">
                 <div class="section-header">
-                    <h2 id="titulo-projetos" class="section-title">Nossas Ações de Restauro</h2>
-                    <p class="section-subtitle">Filtre pelas áreas que necessitam de atenção e reparo imediato</p>
+                    <h2 id="titulo-projetos" class="section-title">Galeria de Antes e Depois</h2>
+                    <p class="section-subtitle">Utilize os botões nas imagens para comparar a situação anterior com a versão restaurada</p>
                 </div>
 
                 <!-- Menu de Seleção -->
                 <div class="filter-container" role="tablist" aria-label="Categorias de Projetos">
                     <button class="filter-btn active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
-                    <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Patrimônio</button>
-                    <button class="filter-btn" data-filter="ambiente" role="tab" aria-selected="false">Salas & Estrutura</button>
+                    <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Mobiliário</button>
+                    <button class="filter-btn" data-filter="ambiente" role="tab" aria-selected="false">Salas & Corredores</button>
                     <button class="filter-btn" data-filter="convivencia" role="tab" aria-selected="false">Áreas Comuns</button>
                 </div>
 
                 <!-- Grid de Cards -->
                 <div class="projects-grid">
                     
+                    <!-- Card 1 -->
+                    <article class="card" data-category="ambiente">
+                        <figure class="card-media">
+                            <span class="card-tag">Sala de Aula</span>
+                            <img class="img-before" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80" alt="Sala de aula desorganizada estilo anime" loading="lazy">
+                            <img class="img-after" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Sala de aula organizada e iluminada estilo anime" loading="lazy">
+                            
+                            <div class="toggle-container">
+                                <button class="toggle-btn btn-before active-before">Antes</button>
+                                <button class="toggle-btn btn-after">Depois</button>
+                            </div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Revitalização das Salas de Aula</h3>
+                            <p class="card-description">
+                                <strong>Antes:</strong> Lâmpadas queimadas e ambiente escuro.<br>
+                                <strong>Depois:</strong> Iluminação renovada e espaço totalmente limpo para os estudos.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card" data-category="ambiente">
+                        <figure class="card-media">
+                            <span class="card-tag">Corredores</span>
+                            <img class="img-before" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Corredor escuro e desgastado" loading="lazy">
+                            <img class="img-after" src="https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=600&q=80" alt="Corredor escolar iluminado e limpo estilo anime" loading="lazy">
+                            
+                            <div class="toggle-container">
+                                <button class="toggle-btn btn-before active-before">Antes</button>
+                                <button class="toggle-btn btn-after">Depois</button>
+                            </div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Pintura e Reparo dos Corredores</h3>
+                            <p class="card-description">
+                                <strong>Antes:</strong> Paredes descascadas e marcas nas estruturas.<br>
+                                <strong>Depois:</strong> Nova pintura e remoção de pichações em todas as alas escolares.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card" data-category="convivencia">
+                        <figure class="card-media">
+                            <span class="card-tag">Área Comum</span>
+                            <img class="img-before" src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" alt="Espaço externo descuidado" loading="lazy">
+                            <img class="img-after" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Estudantes interagindo em espaço limpo estilo anime" loading="lazy">
+                            
+                            <div class="toggle-container">
+                                <button class="toggle-btn btn-before active-before">Antes</button>
+                                <button class="toggle-btn btn-after">Depois</button>
+                            </div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Pátio e Área de Convivência</h3>
+                            <p class="card-description">
+                                <strong>Antes:</strong> Lixo espalhado após os intervalos e escassez de lixeiras.<br>
+                                <strong>Depois:</strong> Pontos de coleta seletiva instalados e ambiente preservado pelos estudantes.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
                     <article class="card" data-category="patrimonio">
                         <figure class="card-media">
-                            <img 
-                                src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" 
-                                alt="Desenho estilo anime de uma sala de aula." 
-                                loading="lazy"
-                            >
-                            <span class="card-tag">Urgente</span>
+                            <span class="card-tag">Biblioteca</span>
+                            <img class="img-before" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&q=80" alt="Biblioteca com livros desorganizados" loading="lazy">
+                            <img class="img-after" src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="Biblioteca escolar impecável estilo anime" loading="lazy">
+                            
+                            <div class="toggle-container">
+                                <button class="toggle-btn btn-before active-before">Antes</button>
+                                <button class="toggle-btn btn-after">Depois</button>
+                            </div>
                         </figure>
                         <div class="card-body">
-                            <h3 class="card-title">Manutenção de Ventiladores e Carteiras</h3>
+                            <h3 class="card-title">Organização da Biblioteca</h3>
                             <p class="card-description">
-                                Levantamento de mobiliários danificados para organização de mutirão de conserto e reaproveitamento de peças.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="card" data-category="ambiente">
-                        <figure class="card-media">
-                            <img 
-                                src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" 
-                                alt="Ilustração estilo anime de corredor escolar." 
-                                loading="lazy"
-                            >
-                            <span class="card-tag">Reforma</span>
-                        </figure>
-                        <div class="card-body">
-                            <h3 class="card-title">Pintura e Reparo de Paredes</h3>
-                            <p class="card-description">
-                                Ação voltada para revitalizar a pintura de corredores, cobrir marcas do tempo e remover pichações das áreas comuns.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="card" data-category="convivencia">
-                        <figure class="card-media">
-                            <img 
-                                src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" 
-                                alt="Ilustração artística estilo anime de espaço escolar." 
-                                loading="lazy"
-                            >
-                            <span class="card-tag">Preservação</span>
-                        </figure>
-                        <div class="card-body">
-                            <h3 class="card-title">Campanha Contra o Vandalismo</h3>
-                            <p class="card-description">
-                                Engajamento dos estudantes para manter a conservação de portas, lâmpadas e banheiros, fortalecendo a responsabilidade coletiva.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="card" data-category="ambiente">
-                        <figure class="card-media">
-                            <img 
-                                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" 
-                                alt="Ilustração de ambiente de estudos iluminado." 
-                                loading="lazy"
-                            >
-                            <span class="card-tag">Iluminação</span>
-                        </figure>
-                        <div class="card-body">
-                            <h3 class="card-title">Substituição de Lâmpadas Queimadas</h3>
-                            <p class="card-description">
-                                Mapeamento e troca de lâmpadas defeituosas para melhorar a visibilidade e o conforto térmico nas salas de aula.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="card" data-category="convivencia">
-                        <figure class="card-media">
-                            <img 
-                                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" 
-                                alt="Alunos colaborando em grupo estilo anime." 
-                                loading="lazy"
-                            >
-                            <span class="card-tag">Comunidade</span>
-                        </figure>
-                        <div class="card-body">
-                            <h3 class="card-title">Organização da Pátio e Refeitório</h3>
-                            <p class="card-description">
-                                Criação de pontos de coleta seletiva e conscientização para manter o pátio limpo durante os horários de intervalo.
+                                <strong>Antes:</strong> Mesas danificadas e acervo desorganizado.<br>
+                                <strong>Depois:</strong> Mobilia recuperada, acervo catalogado e espaço pronto para leitura.
                             </p>
                         </div>
                     </article>
@@ -386,6 +444,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Lógica dos Filtros de Categoria
             const filterButtons = document.querySelectorAll('.filter-btn');
             const cards = document.querySelectorAll('.card');
 
@@ -409,6 +468,26 @@
                             card.classList.add('hide');
                         }
                     });
+                });
+            });
+
+            // Lógica de Troca Antes / Depois
+            const cardMedias = document.querySelectorAll('.card-media');
+
+            cardMedias.forEach(media => {
+                const btnBefore = media.querySelector('.btn-before');
+                const btnAfter = media.querySelector('.btn-after');
+
+                btnBefore.addEventListener('click', () => {
+                    media.classList.remove('show-after');
+                    btnBefore.classList.add('active-before');
+                    btnAfter.classList.remove('active-after');
+                });
+
+                btnAfter.addEventListener('click', () => {
+                    media.classList.add('show-after');
+                    btnAfter.classList.add('active-after');
+                    btnBefore.classList.remove('active-before');
                 });
             });
         });
