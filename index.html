@@ -27,7 +27,7 @@
             --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
             --radius-md: 12px;
             --radius-lg: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         [data-theme="dark"] {
@@ -218,7 +218,7 @@
         }
 
         /* ==========================================================================
-           6. GALERIA COM COMPARADOR ANTES / DEPOIS
+           6. GALERIA COM COMPARADOR ANTES / DEPOIS (CORRIGIDO)
            ========================================================================== */
         .gallery-section {
             padding: 60px 0 100px;
@@ -251,7 +251,7 @@
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
         }
 
@@ -266,7 +266,7 @@
             transition: var(--transition);
         }
 
-        /* Image Comparison Slider Component */
+        /* Correção do Componente do Slider Antes/Depois */
         .image-slider {
             position: relative;
             width: 100%;
@@ -282,18 +282,26 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
+        /* Máscara do "Antes" */
         .img-before {
-            z-index: 1;
-            width: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%; /* Controlado via JS */
             overflow: hidden;
-            border-right: 2px solid #fff;
+            z-index: 1;
+            border-right: 2px solid #ffffff;
         }
 
+        /* Mantém a proporção da imagem interna sem distorção */
         .img-before img {
             width: 100%;
-            max-width: none;
+            height: 100%;
+            object-fit: cover;
         }
 
         .slider-range {
@@ -305,6 +313,7 @@
             opacity: 0;
             z-index: 3;
             cursor: ew-resize;
+            margin: 0;
         }
 
         .slider-handle {
@@ -312,12 +321,12 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            width: 4px;
-            background: #fff;
+            width: 3px;
+            background: #ffffff;
             z-index: 2;
             pointer-events: none;
             transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
         }
 
         .slider-handle::after {
@@ -326,16 +335,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 32px;
-            height: 32px;
-            background: #fff;
+            width: 36px;
+            height: 36px;
+            background: #ffffff;
             color: var(--text-main);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .card-content {
@@ -368,7 +378,7 @@
         }
 
         /* ==========================================================================
-           7. RODAPÉ
+           7. RODAPÉ E UTILITÁRIOS
            ========================================================================== */
         .site-footer {
             background: var(--surface);
@@ -439,11 +449,11 @@
 
         <section class="gallery-section" id="transformacoes">
             <div class="container">
-                <div class="filters" role="tablist" aria-label="Filtro de Categorias">
-                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos os Espaços</button>
-                    <button class="filter-btn" data-filter="salas" role="tab" aria-selected="false">Salas de Aula</button>
-                    <button class="filter-btn" data-filter="convivencia" role="tab" aria-selected="false">Convivência</button>
-                    <button class="filter-btn" data-filter="estudo" role="tab" aria-selected="false">Áreas de Estudo</button>
+                <div class="filters" aria-label="Filtro de Categorias">
+                    <button class="filter-btn active" data-filter="all">Todos os Espaços</button>
+                    <button class="filter-btn" data-filter="salas">Salas de Aula</button>
+                    <button class="filter-btn" data-filter="convivencia">Convivência</button>
+                    <button class="filter-btn" data-filter="estudo">Áreas de Estudo</button>
                 </div>
 
                 <div class="cards-grid">
@@ -455,7 +465,7 @@
                                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" alt="Sala de aula desorganizada (Antes)">
                             </div>
                             <div class="slider-handle"></div>
-                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois">
+                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois para Renovação das Salas">
                         </div>
                         <div class="card-content">
                             <span class="card-tag">Sala de Aula</span>
@@ -471,7 +481,7 @@
                                 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Corredor escuro e desgastado (Antes)">
                             </div>
                             <div class="slider-handle"></div>
-                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois">
+                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois para Revitalização dos Corredores">
                         </div>
                         <div class="card-content">
                             <span class="card-tag">Convivência</span>
@@ -487,7 +497,7 @@
                                 <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" alt="Biblioteca com livros e mesas desorganizados (Antes)">
                             </div>
                             <div class="slider-handle"></div>
-                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois">
+                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois para Organização da Biblioteca">
                         </div>
                         <div class="card-content">
                             <span class="card-tag">Áreas de Estudo</span>
@@ -503,7 +513,7 @@
                                 <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" alt="Pátio com lixo espalhado (Antes)">
                             </div>
                             <div class="slider-handle"></div>
-                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois">
+                            <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Controle de comparação Antes e Depois para Pátio e Área de Lazer">
                         </div>
                         <div class="card-content">
                             <span class="card-tag">Convivência</span>
@@ -525,44 +535,64 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Alternador de Tema (Light / Dark Mode)
+            // 1. Alternador de Tema com suporte a LocalStorage
             const themeToggleBtn = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             const themeLabel = document.getElementById('themeLabel');
 
-            const toggleTheme = () => {
-                const currentTheme = document.body.getAttribute('data-theme');
-                if (currentTheme === 'dark') {
-                    document.body.removeAttribute('data-theme');
-                    themeIcon.textContent = '🌙';
-                    themeLabel.textContent = 'Modo Escuro';
-                } else {
+            const applyTheme = (isDark) => {
+                if (isDark) {
                     document.body.setAttribute('data-theme', 'dark');
                     themeIcon.textContent = '☀️';
                     themeLabel.textContent = 'Modo Claro';
+                } else {
+                    document.body.removeAttribute('data-theme');
+                    themeIcon.textContent = '🌙';
+                    themeLabel.textContent = 'Modo Escuro';
                 }
             };
 
-            themeToggleBtn.addEventListener('click', toggleTheme);
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                applyTheme(true);
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = !document.body.hasAttribute('data-theme');
+                applyTheme(isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
 
             // 2. Manipulação do Comparador Visual (Image Slider)
             const sliders = document.querySelectorAll('.image-slider');
 
             sliders.forEach(slider => {
                 const range = slider.querySelector('.slider-range');
-                const beforeImg = slider.querySelector('.img-before');
+                const beforeImgMask = slider.querySelector('.img-before');
+                const beforeImg = beforeImgMask.querySelector('img');
                 const handle = slider.querySelector('.slider-handle');
 
-                const updateSliderPosition = (value) => {
-                    beforeImg.style.width = `${value}%`;
+                const updateSliderPosition = () => {
+                    const value = range.value;
+                    const containerWidth = slider.offsetWidth;
+                    
+                    // Ajusta a largura da máscara
+                    beforeImgMask.style.width = `${value}%`;
+                    
+                    // Mantém a imagem interna fixa na largura total do contêiner pai
+                    beforeImg.style.width = `${containerWidth}px`;
+                    
+                    // Move a linha divisória/handle
                     handle.style.left = `${value}%`;
                 };
 
-                range.addEventListener('input', (e) => {
-                    updateSliderPosition(e.target.value);
-                });
-
-                updateSliderPosition(50);
+                range.addEventListener('input', updateSliderPosition);
+                
+                // Recalcula ao redimensionar a janela para manter proporção correta
+                window.addEventListener('resize', updateSliderPosition);
+                
+                // Inicializa a posição correta
+                updateSliderPosition();
             });
 
             // 3. Sistema de Filtros Categorizados
@@ -571,13 +601,8 @@
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.setAttribute('aria-selected', 'false');
-                    });
-
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    button.setAttribute('aria-selected', 'true');
 
                     const category = button.getAttribute('data-filter');
 
